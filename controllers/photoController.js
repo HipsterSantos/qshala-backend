@@ -16,3 +16,9 @@ async function creatSinglePhoto(props){
     });
     return await photo.save();
 }
+
+exports = {
+    listAllPhotos,
+    listSinglePhoto,
+    creatSinglePhoto,  
+};
