@@ -1,5 +1,6 @@
 const express = require('express'); 
 const router = express.Router();
+const routerlog = require('debug')('router-log');
 const {listAllPhotos, listSinglePhoto,createSinglePhoto} = require('../controllers/photoController');
 router.get('',async (req, res) => {
     let allPhotos = await listAllPhotos();
