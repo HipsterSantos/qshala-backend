@@ -1,17 +1,23 @@
 const express = require('express'); 
 const router = express.Router();
-const {listAllPhotos, listSinglePhoto,createSinglePhoto} = require('../controllers/photo');
-router.get('/',async (req, res) => {
+const {listAllPhotos, listSinglePhoto,createSinglePhoto} = require('../controllers/photoController');
+router.get('',async (req, res) => {
     let allPhotos = await listAllPhotos();
-    res.render()
+    res.render('home.ejs');
 })
 
-app.get('/',async (req,res) =>{
-    res.send('welcome by id ')
+router.get('/show/:id',async (req,res) =>{
+    let photo = await listSinglePhoto(req.params.id);
+    res.render('single.ejs');
 })
 
-app.get('/new',async (req,res) =>{
-    console.log('adding new image'); 
+router.get('/new',async (req,res) =>{
+    res.render('postOne.ejs'); 
 })
 
-app.post('post/new', async (req,res) =>{});
+router.post('post/new', async (req,res) =>{
+    let photo = await createSinglePhoto(req.body);
+    res.redirect('/');
+});
+
+module.exports = router;

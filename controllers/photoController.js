@@ -17,7 +17,7 @@ async function creatSinglePhoto(props){
     return await photo.save();
 }
 
-exports = {
+module.exports = {
     listAllPhotos,
     listSinglePhoto,
     creatSinglePhoto,  
